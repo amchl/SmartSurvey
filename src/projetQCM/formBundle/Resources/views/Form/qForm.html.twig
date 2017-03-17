@@ -2,9 +2,13 @@
 {% block content %}
     <div class="well">
         <div class="container-fluid" style="text-align: center">
-            Question : {{ form(form.titre) }}
-            <div class="container-fluid" style="text-align: center">
-                    Réponse : {{ form(form.reponse) }}
+            <div class ="row">
+                <div class="col-md-3">Question : </div>
+                <div class="col-md-9" style="margin-left: -140px"> {{ form(form.titre) }} </div>
+            </div>
+            <div class ="row">
+                <div class="col-md-6" > Réponse : </div>
+                <div class="col-md-2" style="margin-left: -270px"> {{ form(form.reponses) }} </div>
             </div>
         </div>
     </div>

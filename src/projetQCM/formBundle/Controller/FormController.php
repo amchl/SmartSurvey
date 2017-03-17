@@ -21,7 +21,7 @@ class FormController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('formBundle:Form:form.html.twig');
+        return $this->render('formBundle:Form:qform.html.twig');
     }
 
     public function formAction(Request $request)
@@ -29,7 +29,7 @@ class FormController extends Controller
         $formulaire = new Formulaire();
         $form = $this->get('form.factory')->createBuilder(FormType::class, $formulaire)
             ->add('titre', TextType::class)
-            ->add('reponse', TextType::class)
+            ->add('reponses', TextType::class)
             ->getForm();
 
         if ($request->isMethod('POST')) {
@@ -39,8 +39,9 @@ class FormController extends Controller
              $em = $this->getDoctrine()->getManager();
              $em->persist($data);
              $em->flush();
-
-            //$this->get('mailer')->send($request);
         }
+        return $this->render('formBundle:Form:qform.html.twig', array(
+                'form' => $form->createView(),
+            ));
     }
 }
