@@ -8,7 +8,14 @@
 
 namespace projetQCM\formBundle\Controller;
 
+use projetQCM\formBundle\Entity\Formulaire;
+use projetQCM\formBundle\Entity\Questionnaire;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\HttpFoundation\Request;
 
 class FormController extends Controller
 {
@@ -17,19 +24,23 @@ class FormController extends Controller
         return $this->render('formBundle:Form:form.html.twig');
     }
 
-    public function formAction()
+    public function formAction(Request $request)
     {
-        $question = new Question();
-        $formBuilder = $this->get('form.Factory')->createBuilder(FormType::class, $question);
+        $formulaire = new Formulaire();
+        $form = $this->get('form.factory')->createBuilder(FormType::class, $formulaire)
+            ->add('titre', TextType::class)
+            ->add('reponse', TextType::class)
+            ->getForm();
 
-        $formBuilder
-            ->add('question', TextType::class)
-            ->add('submit', SubmitType::class );
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            $data = $form->getData();
 
-        $form = $formBuilder->getForm();
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($data);
+             $em->flush();
 
-        return $this->render('formBundle:Form:qForm.html.twig', array(
-            'form'=>$form->createView()
-        ));
+            //$this->get('mailer')->send($request);
+        }
     }
 }

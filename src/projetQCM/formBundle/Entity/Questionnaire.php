@@ -3,6 +3,7 @@
 namespace projetQCM\formBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Questionnaire
@@ -42,12 +43,12 @@ class Questionnaire
      */
     private $reponses;
 
+
+
     public function __construct()
     {
         $this->reponses = new ArrayCollection();
     }
-
-
 
 
     /**
