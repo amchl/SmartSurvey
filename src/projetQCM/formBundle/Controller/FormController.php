@@ -8,7 +8,12 @@
 
 namespace projetQCM\formBundle\Controller;
 
+use projetQCM\formBundle\Entity\Questionnaire;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class FormController extends Controller
 {
@@ -19,12 +24,13 @@ class FormController extends Controller
 
     public function formAction()
     {
-        $question = new Question();
+        $question = new Questionnaire();
         $formBuilder = $this->get('form.Factory')->createBuilder(FormType::class, $question);
 
         $formBuilder
-            ->add('question', TextType::class)
-            ->add('submit', SubmitType::class );
+            ->add('titre', TextType::class)
+            ->add('reponses', CheckboxType::class)
+            ->add('submit', SubmitType::class);
 
         $form = $formBuilder->getForm();
 

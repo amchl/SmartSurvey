@@ -3,6 +3,7 @@
 namespace projetQCM\formBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Questionnaire
@@ -33,6 +34,24 @@ class Questionnaire
      * @ORM\OneToMany(targetEntity="Reponse", mappedBy="questionnaire")
      */
     private $reponses;
+
+    /**
+     * @return mixed
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
+
+    /**
+     * @param mixed $reponses
+     */
+    public function setReponses($reponses)
+    {
+        $this->reponses = $reponses;
+    }
+
+
 
     public function __construct()
     {
