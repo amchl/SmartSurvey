@@ -43,30 +43,12 @@ class Questionnaire
      */
     private $reponses;
 
-    /**
-     * @return mixed
-     */
-    public function getReponses()
-    {
-        return $this->reponses;
-    }
-
-    /**
-     * @param mixed $reponses
-     */
-    public function setReponses($reponses)
-    {
-        $this->reponses = $reponses;
-    }
-
 
 
     public function __construct()
     {
         $this->reponses = new ArrayCollection();
     }
-
-
 
 
     /**
