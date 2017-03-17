@@ -1,10 +1,14 @@
 form_homepage:
     path:     /
     defaults: { _controller: formBundle:Default:index }
-<<<<<<< Updated upstream
-=======
+
 
 form_controller:
     path:     /form
     defaults: { _controller: formBundle:Form:form }
->>>>>>> Stashed changes
+
+
+listform_controller:
+    path:     /listform
+    defaults: { _controller: formBundle:ListForm:show }
+
