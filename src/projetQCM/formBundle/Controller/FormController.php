@@ -31,7 +31,8 @@ class FormController extends Controller
     {
         $formulaire = new Formulaire();
         $form = $this->get('form.factory')->createBuilder(FormulaireType::class, $formulaire)
-            ->add('titre', QuestionnaireType::class)
+            ->add('titre', TextType::class)
+            ->add('questionnaires', QuestionnaireType::class)
             ->add('reponses', ReponseType::class)
             ->add('envoyer', SubmitType::class)
             ->getForm();
