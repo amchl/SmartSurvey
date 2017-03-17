@@ -117,4 +117,28 @@ class Questionnaire
     {
         return $this->reponses;
     }
+
+    /**
+     * Set formulaire
+     *
+     * @param \projetQCM\formBundle\Entity\Formulaire $formulaire
+     *
+     * @return Questionnaire
+     */
+    public function setFormulaire(\projetQCM\formBundle\Entity\Formulaire $formulaire = null)
+    {
+        $this->formulaire = $formulaire;
+
+        return $this;
+    }
+
+    /**
+     * Get formulaire
+     *
+     * @return \projetQCM\formBundle\Entity\Formulaire
+     */
+    public function getFormulaire()
+    {
+        return $this->formulaire;
+    }
 }

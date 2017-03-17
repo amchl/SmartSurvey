@@ -34,14 +34,13 @@ class Formulaire
      */
     private $questionnaires;
 
-    public function __construct()
-    {
-        $this->questionnaires = new ArrayCollection();
-    }
 
+    /**
+     * @ORM\OneToMany(targetEntity="Reponse", mappedBy="formulaire")
+     */
+    private $reponses;
 
-
-
+    
     /**
      * Get id
      *
@@ -75,5 +74,80 @@ class Formulaire
     {
         return $this->titre;
     }
-}
 
+    /**
+     * Add questionnaire
+     *
+     * @param \projetQCM\formBundle\Entity\Questionnaire $questionnaire
+     *
+     * @return Formulaire
+     */
+    public function addQuestionnaire(\projetQCM\formBundle\Entity\Questionnaire $questionnaire)
+    {
+        $this->questionnaires[] = $questionnaire;
+
+        return $this;
+    }
+
+    /**
+     * Remove questionnaire
+     *
+     * @param \projetQCM\formBundle\Entity\Questionnaire $questionnaire
+     */
+    public function removeQuestionnaire(\projetQCM\formBundle\Entity\Questionnaire $questionnaire)
+    {
+        $this->questionnaires->removeElement($questionnaire);
+    }
+
+    /**
+     * Get questionnaires
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuestionnaires()
+    {
+        return $this->questionnaires;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questionnaires = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reponse
+     *
+     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     *
+     * @return Formulaire
+     */
+    public function addReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    {
+        $this->reponses[] = $reponse;
+
+        return $this;
+    }
+
+    /**
+     * Remove reponse
+     *
+     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     */
+    public function removeReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    {
+        $this->reponses->removeElement($reponse);
+    }
+
+    /**
+     * Get reponses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
+}
