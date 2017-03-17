@@ -11,6 +11,8 @@ namespace projetQCM\formBundle\Controller;
 use projetQCM\formBundle\Entity\Formulaire;
 use projetQCM\formBundle\Entity\Questionnaire;
 use projetQCM\formBundle\Form\FormulaireType;
+use projetQCM\formBundle\Form\QuestionnaireType;
+use projetQCM\formBundle\Form\ReponseType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -29,8 +31,8 @@ class FormController extends Controller
     {
         $formulaire = new Formulaire();
         $form = $this->get('form.factory')->createBuilder(FormulaireType::class, $formulaire)
-            ->add('titre', FormulaireType::class)
-            ->add('reponses', FormulaireType::class)
+            ->add('titre', QuestionnaireType::class)
+            ->add('reponses', ReponseType::class)
             ->add('envoyer', SubmitType::class)
             ->getForm();
 

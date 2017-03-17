@@ -115,7 +115,7 @@ class Formulaire
     public function __construct()
     {
         $this->questionnaires = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reponses = new \projetQCM\formBundle\Entity\Reponse();
     }
 
     /**
