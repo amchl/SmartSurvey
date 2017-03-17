@@ -34,14 +34,13 @@ class Formulaire
      */
     private $questionnaires;
 
-    public function __construct()
-    {
-        $this->questionnaires = new ArrayCollection();
-    }
 
+    /**
+     * @ORM\OneToMany(targetEntity="Reponse", mappedBy="formulaire")
+     */
+    private $reponses;
 
-
-
+    
     /**
      * Get id
      *
@@ -108,5 +107,47 @@ class Formulaire
     public function getQuestionnaires()
     {
         return $this->questionnaires;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questionnaires = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->reponses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reponse
+     *
+     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     *
+     * @return Formulaire
+     */
+    public function addReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    {
+        $this->reponses[] = $reponse;
+
+        return $this;
+    }
+
+    /**
+     * Remove reponse
+     *
+     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     */
+    public function removeReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    {
+        $this->reponses->removeElement($reponse);
+    }
+
+    /**
+     * Get reponses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
     }
 }

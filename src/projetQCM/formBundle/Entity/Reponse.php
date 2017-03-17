@@ -43,6 +43,13 @@ class Reponse
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="reponses")
+     * @ORM\JoinColumn(name="Formulaire_id", referencedColumnName="id")
+     */
+    private $formulaire;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -122,5 +129,29 @@ class Reponse
     public function getQuestionnaire()
     {
         return $this->questionnaire;
+    }
+
+    /**
+     * Set formulaire
+     *
+     * @param \projetQCM\formBundle\Entity\Formulaire $formulaire
+     *
+     * @return Reponse
+     */
+    public function setFormulaire(\projetQCM\formBundle\Entity\Formulaire $formulaire = null)
+    {
+        $this->formulaire = $formulaire;
+
+        return $this;
+    }
+
+    /**
+     * Get formulaire
+     *
+     * @return \projetQCM\formBundle\Entity\Formulaire
+     */
+    public function getFormulaire()
+    {
+        return $this->formulaire;
     }
 }

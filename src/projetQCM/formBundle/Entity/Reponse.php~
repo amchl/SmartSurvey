@@ -43,6 +43,13 @@ class Reponse
 
 
     /**
+     * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="reponses")
+     * @ORM\JoinColumn(name="Formulaire_id", referencedColumnName="id")
+     */
+    private $formulaire;
+
+
+    /**
      * Get id
      *
      * @return int
