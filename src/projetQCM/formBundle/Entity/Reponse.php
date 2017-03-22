@@ -3,7 +3,6 @@
 namespace projetQCM\formBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Reponse
@@ -25,29 +24,16 @@ class Reponse
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="string", length=255)
+     * @ORM\Column(name="r", type="string", length=255)
      */
-    private $description;
+    private $r;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="valide", type="boolean")
+     * @ORM\Column(name="valid", type="boolean")
      */
-    private $valide;
-
-    /**
-    * @ORM\ManyToOne(targetEntity="Questionnaire", inversedBy="reponses")
-    * @ORM\JoinColumn(name="questionnaire_id", referencedColumnName="id")
-    */
-    private $questionnaire;
-
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="reponses")
-     * @ORM\JoinColumn(name="Formulaire_id", referencedColumnName="id")
-     */
-    private $formulaire;
+    private $valid;
 
 
     /**
@@ -61,98 +47,51 @@ class Reponse
     }
 
     /**
-     * Set description
+     * Set r
      *
-     * @param string $description
+     * @param string $r
      *
      * @return Reponse
      */
-    public function setDescription($description)
+    public function setR($r)
     {
-        $this->description = $description;
+        $this->r = $r;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get r
      *
      * @return string
      */
-    public function getDescription()
+    public function getR()
     {
-        return $this->description;
+        return $this->r;
     }
 
     /**
-     * Set valide
+     * Set valid
      *
-     * @param boolean $valide
+     * @param boolean $valid
      *
      * @return Reponse
      */
-    public function setValide($valide)
+    public function setValid($valid)
     {
-        $this->valide = $valide;
+        $this->valid = $valid;
 
         return $this;
     }
 
     /**
-     * Get valide
+     * Get valid
      *
      * @return bool
      */
-    public function getValide()
+    public function getValid()
     {
-        return $this->valide;
-    }
-
-    /**
-     * Set questionnaire
-     *
-     * @param \projetQCM\formBundle\Entity\Questionnaire $questionnaire
-     *
-     * @return Reponse
-     */
-    public function setQuestionnaire(\projetQCM\formBundle\Entity\Questionnaire $questionnaire = null)
-    {
-        $this->questionnaire = $questionnaire;
-
-        return $this;
-    }
-
-    /**
-     * Get questionnaire
-     *
-     * @return \projetQCM\formBundle\Entity\Questionnaire
-     */
-    public function getQuestionnaire()
-    {
-        return $this->questionnaire;
-    }
-
-    /**
-     * Set formulaire
-     *
-     * @param \projetQCM\formBundle\Entity\Formulaire $formulaire
-     *
-     * @return Reponse
-     */
-    public function setFormulaire(\projetQCM\formBundle\Entity\Formulaire $formulaire = null)
-    {
-        $this->formulaire = $formulaire;
-
-        return $this;
-    }
-
-    /**
-     * Get formulaire
-     *
-     * @return \projetQCM\formBundle\Entity\Formulaire
-     */
-    public function getFormulaire()
-    {
-        return $this->formulaire;
+        return $this->valid;
     }
 }
+

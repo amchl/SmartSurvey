@@ -3,7 +3,6 @@
 namespace projetQCM\formBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Formulaire
@@ -25,23 +24,25 @@ class Formulaire
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="q", type="string", length=255)
      */
-    private $titre;
-
+    private $q;
 
     /**
-     * @ORM\OneToMany(targetEntity="Questionnaire", mappedBy="formulaire")
+     * @var string
+     *
+     * @ORM\Column(name="r", type="string", length=255)
      */
-    private $questionnaires;
-
+    private $r;
 
     /**
-     * @ORM\OneToMany(targetEntity="Reponse", mappedBy="formulaire")
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $reponses;
+    private $title;
 
-    
+
     /**
      * Get id
      *
@@ -53,102 +54,75 @@ class Formulaire
     }
 
     /**
-     * Set titre
+     * Set q
      *
-     * @param string $titre
+     * @param string $q
      *
      * @return Formulaire
      */
-    public function setTitre($titre)
+    public function setQ($q)
     {
-        $this->titre = $titre;
+        $this->q = $q;
 
         return $this;
     }
 
     /**
-     * Get titre
+     * Get q
      *
      * @return string
      */
-    public function getTitre()
+    public function getQ()
     {
-        return $this->titre;
+        return $this->q;
     }
 
     /**
-     * Add questionnaire
+     * Set r
      *
-     * @param \projetQCM\formBundle\Entity\Questionnaire $questionnaire
+     * @param string $r
      *
      * @return Formulaire
      */
-    public function addQuestionnaire(\projetQCM\formBundle\Entity\Questionnaire $questionnaire)
+    public function setR($r)
     {
-        $this->questionnaires[] = $questionnaire;
+        $this->r = $r;
 
         return $this;
     }
 
     /**
-     * Remove questionnaire
+     * Get r
      *
-     * @param \projetQCM\formBundle\Entity\Questionnaire $questionnaire
+     * @return string
      */
-    public function removeQuestionnaire(\projetQCM\formBundle\Entity\Questionnaire $questionnaire)
+    public function getR()
     {
-        $this->questionnaires->removeElement($questionnaire);
+        return $this->r;
     }
 
     /**
-     * Get questionnaires
+     * Set title
      *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getQuestionnaires()
-    {
-        return $this->questionnaires;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->questionnaires = new \projetQCM\formBundle\Entity\Questionnaire();
-        $this->reponses = new \projetQCM\formBundle\Entity\Reponse();
-    }
-
-    /**
-     * Add reponse
-     *
-     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     * @param string $title
      *
      * @return Formulaire
      */
-    public function addReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    public function setTitle($title)
     {
-        $this->reponses[] = $reponse;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Remove reponse
+     * Get title
      *
-     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     * @return string
      */
-    public function removeReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    public function getTitle()
     {
-        $this->reponses->removeElement($reponse);
-    }
-
-    /**
-     * Get reponses
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReponses()
-    {
-        return $this->reponses;
+        return $this->title;
     }
 }
+

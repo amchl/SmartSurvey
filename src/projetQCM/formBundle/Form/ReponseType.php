@@ -17,7 +17,7 @@ class ReponseType extends AbstractType
     {
         $builder
             ->add('valide', CheckboxType::class)
-            ->add('description', TextType::class);
+            ->add('r', TextType::class);
     }
     
     /**
