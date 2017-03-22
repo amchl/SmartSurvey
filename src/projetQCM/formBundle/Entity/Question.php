@@ -62,5 +62,9 @@ class Question
     {
         return $this->q;
     }
+
+    public function __toString() {
+        return $this->q;
+    }
 }
 

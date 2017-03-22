@@ -93,5 +93,9 @@ class Reponse
     {
         return $this->valid;
     }
+
+    public function __toString() {
+        return $this->r;
+    }
 }
 
