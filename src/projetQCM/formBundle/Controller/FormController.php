@@ -41,6 +41,9 @@ class FormController extends Controller
              $em = $this->getDoctrine()->getManager();
              $em->persist($data);
              $em->flush();
+            return $this->render('formBundle:Form:accueil.html.twig', array(
+                'form' => $form->createView(),
+            ));
         }
         return $this->render('formBundle:Form:qform.html.twig', array(
                 'form' => $form->createView(),
