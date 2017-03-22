@@ -16,8 +16,8 @@ class ReponseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('description', TextType::class)
-            ->add('valide', CheckboxType::class);
+            ->add('valide', CheckboxType::class)
+            ->add('description', TextType::class);
     }
     
     /**
