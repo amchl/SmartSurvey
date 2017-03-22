@@ -3,6 +3,7 @@
 namespace projetQCM\formBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Questionnaire
@@ -21,39 +22,18 @@ class Questionnaire
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="titre", type="string", length=255)
-     */
-    private $titre;
-
 
     /**
      * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="questionnaires")
      * @ORM\JoinColumn(name="formulaire_id", referencedColumnName="id")
      */
-    private $formulaire;
-
-
-
-    /**
-     * @ORM\OneToMany(targetEntity="Reponse", mappedBy="questionnaire")
-     */
-    private $reponses;
-
-    public function __construct()
-    {
-        $this->reponses = new ArrayCollection();
-    }
-
-
+    private $q;
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -61,84 +41,26 @@ class Questionnaire
     }
 
     /**
-     * Set titre
+     * Set q
      *
-     * @param string $titre
+     * @param \projetQCM\formBundle\Entity\Formulaire $q
      *
      * @return Questionnaire
      */
-    public function setTitre($titre)
+    public function setQ(\projetQCM\formBundle\Entity\Formulaire $q = null)
     {
-        $this->titre = $titre;
+        $this->q = $q;
 
         return $this;
     }
 
     /**
-     * Get titre
-     *
-     * @return string
-     */
-    public function getTitre()
-    {
-        return $this->titre;
-    }
-
-    /**
-     * Add reponse
-     *
-     * @param \projetQCM\formBundle\Entity\Reponse $reponse
-     *
-     * @return Questionnaire
-     */
-    public function addReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
-    {
-        $this->reponses[] = $reponse;
-
-        return $this;
-    }
-
-    /**
-     * Remove reponse
-     *
-     * @param \projetQCM\formBundle\Entity\Reponse $reponse
-     */
-    public function removeReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
-    {
-        $this->reponses->removeElement($reponse);
-    }
-
-    /**
-     * Get reponses
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getReponses()
-    {
-        return $this->reponses;
-    }
-
-    /**
-     * Set formulaire
-     *
-     * @param \projetQCM\formBundle\Entity\Formulaire $formulaire
-     *
-     * @return Questionnaire
-     */
-    public function setFormulaire(\projetQCM\formBundle\Entity\Formulaire $formulaire = null)
-    {
-        $this->formulaire = $formulaire;
-
-        return $this;
-    }
-
-    /**
-     * Get formulaire
+     * Get q
      *
      * @return \projetQCM\formBundle\Entity\Formulaire
      */
-    public function getFormulaire()
+    public function getQ()
     {
-        return $this->formulaire;
+        return $this->q;
     }
 }

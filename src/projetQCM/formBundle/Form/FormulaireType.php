@@ -13,12 +13,7 @@ class FormulaireType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('titre')
-            ->add('questionnaires')
-            ->add('reponses')
-            ->add('envoyer')
-        ;
+        $builder->add('title');
     }
     
     /**
