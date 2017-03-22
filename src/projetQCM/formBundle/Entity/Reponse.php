@@ -61,6 +61,17 @@ class Reponse
     }
 
     /**
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="reponses")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id")
+     */
+     private  $question;
+
+
+
+
+
+
+    /**
      * Get r
      *
      * @return string
@@ -97,5 +108,28 @@ class Reponse
     public function __toString() {
         return $this->r;
     }
-}
 
+    /**
+     * Set question
+     *
+     * @param \projetQCM\formBundle\Entity\Question $question
+     *
+     * @return Reponse
+     */
+    public function setQuestion(\projetQCM\formBundle\Entity\Question $question = null)
+    {
+        $this->question = $question;
+
+        return $this;
+    }
+
+    /**
+     * Get question
+     *
+     * @return \projetQCM\formBundle\Entity\Question
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+}

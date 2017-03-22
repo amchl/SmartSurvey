@@ -44,6 +44,12 @@ class Formulaire
 
 
     /**
+     * @ORM\OneToMany(targetEntity="Question", mappedBy="formulaire")
+     */
+    private $questions;
+
+
+    /**
      * Get id
      *
      * @return int
@@ -126,5 +132,45 @@ class Formulaire
     }
 
 
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->questions = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add question
+     *
+     * @param \projetQCM\formBundle\Entity\Question $question
+     *
+     * @return Formulaire
+     */
+    public function addQuestion(\projetQCM\formBundle\Entity\Question $question)
+    {
+        $this->questions[] = $question;
+
+        return $this;
+    }
+
+    /**
+     * Remove question
+     *
+     * @param \projetQCM\formBundle\Entity\Question $question
+     */
+    public function removeQuestion(\projetQCM\formBundle\Entity\Question $question)
+    {
+        $this->questions->removeElement($question);
+    }
+
+    /**
+     * Get questions
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getQuestions()
+    {
+        return $this->questions;
+    }
+}

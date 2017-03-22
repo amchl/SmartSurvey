@@ -28,6 +28,18 @@ class Question
      */
     private $q;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="questions")
+     * @ORM\JoinColumn(name="formulaire_id", referencedColumnName="id")
+     */
+    private $formulaire;
+
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Reponse", mappedBy="question")
+     */
+    private $reponses;
 
     /**
      * Get id
@@ -66,5 +78,70 @@ class Question
     public function __toString() {
         return $this->q;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Set formulaire
+     *
+     * @param \projetQCM\formBundle\Entity\Formulaire $formulaire
+     *
+     * @return Question
+     */
+    public function setFormulaire(\projetQCM\formBundle\Entity\Formulaire $formulaire = null)
+    {
+        $this->formulaire = $formulaire;
+
+        return $this;
+    }
+
+    /**
+     * Get formulaire
+     *
+     * @return \projetQCM\formBundle\Entity\Formulaire
+     */
+    public function getFormulaire()
+    {
+        return $this->formulaire;
+    }
+
+
+    /**
+     * Add reponse
+     *
+     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     *
+     * @return Question
+     */
+    public function addReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    {
+        $this->reponses[] = $reponse;
+
+        return $this;
+    }
+
+    /**
+     * Remove reponse
+     *
+     * @param \projetQCM\formBundle\Entity\Reponse $reponse
+     */
+    public function removeReponse(\projetQCM\formBundle\Entity\Reponse $reponse)
+    {
+        $this->reponses->removeElement($reponse);
+    }
+
+    /**
+     * Get reponses
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReponses()
+    {
+        return $this->reponses;
+    }
+}
