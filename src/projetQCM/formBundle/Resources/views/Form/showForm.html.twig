@@ -1,0 +1,18 @@
+{% extends '::master.html.twig' %}
+{% block content %}
+    <div class="row" >
+        <div class="col-md-8" >
+            {{ formulaire.titre }}
+        </div>
+        <div class="col-md-2">
+            <button id="{{ formulaire.id }}"  class = "btn-primary" >
+                <a href="showForm.html.twig">Show</a>
+            </button>
+        </div>
+        <div class="col-md-2">
+            <button class = "btn-primary" >
+                edit
+            </button>
+        </div>
+    </div>
+{% endblock %}
