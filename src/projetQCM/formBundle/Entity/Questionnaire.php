@@ -36,6 +36,24 @@ class Questionnaire
      */
     private $formulaire;
 
+    private $question;
+
+    /**
+     * @return mixed
+     */
+    public function getQuestion()
+    {
+        return $this->question;
+    }
+
+    /**
+     * @param mixed $question
+     */
+    public function setQuestion($question)
+    {
+        $this->question = $question;
+    }
+
 
 
     /**
