@@ -29,28 +29,14 @@ class ReponseFormController extends Controller
 
     }
 
-    public function validAction(Request $request, $id)
-    {
 
-        $form = $this->createForm(new RoleType() );
+    // TODO
+    public function validationAction(Request $request) {
 
-        $form->handleRequest($request);
+            $compteur=0;
+            return $this->render('formBundle:Form:validation.html.twig', array('nb' =>$compteur));
 
-        if ($form->isValid() )
-        {
 
-            $data = $form->getData();
-
-            //Get role chosen from form data (key is fieldname) and choose appropriate method to make change
-            switch($data['role'] ){
-             case "moderateur":
-                 $this->donneModerateur($id);
-                 break;
-             case "actif":
-                 $this->donneActif($id);
-                 break;
-             //etc etc
-    }
     }
 
 

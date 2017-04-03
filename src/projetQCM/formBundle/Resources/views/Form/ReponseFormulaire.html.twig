@@ -7,6 +7,8 @@
 
        <h1> {{ formulaire.title }} </h1>
 
+        <form action="{{ path('validation_status') }}" method="post" {{ form_enctype(form) }}>
+            {{ form_widget(form) }}
 
 
 
@@ -19,11 +21,11 @@
             {% for reponse in question.reponses  %}
 
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
 
                         {{ reponse.r }}
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <input class="{{ reponse.valid }}" id="{{ reponse.id }}" type="radio" name="{{ question.id }}" />
 
                     </div>
@@ -37,10 +39,7 @@
 
         {% endfor %}
 
-
-
-
-
+            <input class="input_button" type="submit" value="Search" />
 
     </div>
     </div>
