@@ -26,20 +26,20 @@ class Question
      *
      * @ORM\Column(name="q", type="string", length=255)
      */
-    private $q;
+    protected $q;
 
     /**
      * @ORM\ManyToOne(targetEntity="Formulaire", inversedBy="questions")
      * @ORM\JoinColumn(name="formulaire_id", referencedColumnName="id")
      */
-    private $formulaire;
+    protected $formulaire;
 
 
 
     /**
      * @ORM\OneToMany(targetEntity="Reponse", mappedBy="question")
      */
-    private $reponses;
+    protected $reponses;
 
     /**
      * Get id

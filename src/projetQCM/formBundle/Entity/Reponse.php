@@ -26,14 +26,14 @@ class Reponse
      *
      * @ORM\Column(name="r", type="string", length=255)
      */
-    private $r;
+    protected $r;
 
     /**
      * @var bool
      *
      * @ORM\Column(name="valid", type="boolean")
      */
-    private $valid;
+    protected $valid;
 
 
     /**

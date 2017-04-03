@@ -1,0 +1,51 @@
+{% extends '::master.html.twig' %}
+{% block content %}
+    <div class="well">
+    <div class="container-fluid" style="text-align: center">
+    <div class ="row">
+
+
+       <h1> {{ formulaire.title }} </h1>
+
+
+
+
+        {% for question in formulaire.questions %}
+
+            <div class="row">
+
+
+          <h2>{{ question.q }}</h2>
+            {% for reponse in question.reponses  %}
+
+                <div class="row">
+                    <div class="col-md-8">
+
+                        {{ reponse.r }}
+                    </div>
+                    <div class="col-md-4">
+                        <input class="{{ reponse.valid }}" id="{{ reponse.id }}" type="radio" name="{{ question.id }}" />
+
+                    </div>
+
+                </div>
+
+
+            {% endfor %}
+
+            </div>
+
+        {% endfor %}
+
+
+
+
+
+
+    </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

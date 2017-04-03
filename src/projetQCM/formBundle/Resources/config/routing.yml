@@ -12,3 +12,12 @@ listform_controller:
     path:     /listform
     defaults: { _controller: formBundle:ListForm:show }
 
+
+reponseform_controller:
+    path:     /listForm/{idForm}
+    defaults: { _controller: formBundle:ReponseForm:ReponseShow }
+
+
+formulaire_show:
+    path:     /listForm/{idForm}
+    defaults: { _controller: formBundle:ReponseForm:reponseShow }
