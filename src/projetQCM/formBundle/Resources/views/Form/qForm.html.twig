@@ -4,8 +4,20 @@
         <div class="container-fluid" style="text-align: center">
             <div class ="row">
                <!-- <div class="col-md-3"><label>Question : </label></div>-->
-                <div > {{ form(form) }} </div>
+                <div > {{ form(form.title) }} </div>
+                <div > {{ form(form.q) }} </div>
+                <div > {{ form(form.r) }} </div>
+                <div > {{ form(form.r) }} </div>
+                <div > {{ form(form.r) }} </div>
+
+                <input id="button" type="submit" name="button" onclick="tamere();" value="+"/>
+
             </div>
         </div>
     </div>
+   <!--  <script>
+    function tamere() {
+        alert("You button was pressed");
+    }
+    ​</script>-->
 {% endblock %}
