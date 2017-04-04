@@ -1,17 +1,23 @@
 {% extends '::master.html.twig' %}
 {% block content %}
+    <script>
+        function calcul(){
+            var compt =0;
+            var elements = document.getElementsByTagName('input');
+
+            for (var i = 0; i < elements.length; i++) {
+               if( elements[i].classList.contains(1) &&  elements[i].checked){
+                    compt++;
+                }
+            }
+        return compt;
+        }
+    </script>
     <div class="well">
     <div class="container-fluid" style="text-align: center">
     <div class ="row">
 
-
        <h1> {{ formulaire.title }} </h1>
-
-        <form action="{{ path('validation_status') }}" method="post" {{ form_enctype(form) }}>
-            {{ form_widget(form) }}
-
-
-
         {% for question in formulaire.questions %}
 
             <div class="row">
@@ -39,7 +45,7 @@
 
         {% endfor %}
 
-            <input class="input_button" type="submit" value="Search" />
+            <input type="button" onclick="calcul()" class="input_button" value="Corriger" />
 
     </div>
     </div>

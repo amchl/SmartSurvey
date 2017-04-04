@@ -22,7 +22,6 @@ formulaire_show:
     path:     /listForm/{idForm}
     defaults: { _controller: formBundle:ReponseForm:reponseShow }
 
-
-  formulaire_show:
-     path:     /listForm/{idForm}
-     defaults: { _controller: formBundle:ReponseForm:validationShow }
+validation_show:
+    path:     /validation/{compt}
+    defaults: { _controller: formBundle:ReponseForm:validation }

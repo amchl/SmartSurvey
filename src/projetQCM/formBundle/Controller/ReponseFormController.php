@@ -30,14 +30,5 @@ class ReponseFormController extends Controller
     }
 
 
-    // TODO
-    public function validationAction(Request $request) {
-
-            $compteur=0;
-            return $this->render('formBundle:Form:validation.html.twig', array('nb' =>$compteur));
-
-
-    }
-
 
 }
