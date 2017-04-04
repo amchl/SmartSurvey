@@ -34,9 +34,10 @@ class FormController extends Controller
             ->add('title', TextType::class)
             ->add('q', QuestionType::class)
             ->add('r', ReponseType::class)
-            ->add('button', ButtonType::class)
-
-            ->add('envoyer', SubmitType::class)
+            ->add('button', SubmitType::class, array(
+                'validation_groups' => false))
+            ->add('envoyer', SubmitType::class, array(
+                'validation_groups' => true))
             ->getForm();
 
         //$request = $this->get('request');
@@ -51,17 +52,22 @@ class FormController extends Controller
         }        if ($form->get('+')->onClicked()) {
             $form->add('r', TextType::class);
         }*/
+        if ($form->get('button')->isClicked()) {
+            $form->add('r', ReponseType::class);
+        }
+        if ($form->get('envoyer')->isClicked()) {
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
-            $data = $form->getData();
+            if ($request->isMethod('POST')) {
+                $form->handleRequest($request);
+                $data = $form->getData();
 
-             $em = $this->getDoctrine()->getManager();
-             $em->persist($data);
-             $em->flush();
-            return $this->render('formBundle:Form:accueil.html.twig', array(
-                'form' => $form->createView(),
-            ));
+                 $em = $this->getDoctrine()->getManager();
+                 $em->persist($data);
+                 $em->flush();
+                return $this->render('formBundle:Form:accueil.html.twig', array(
+                    'form' => $form->createView(),
+                ));
+            }
         }
         return $this->render('formBundle:Form:qform.html.twig', array(
                 'form' => $form->createView(),
