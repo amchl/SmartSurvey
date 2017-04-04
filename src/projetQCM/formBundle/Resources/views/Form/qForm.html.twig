@@ -2,22 +2,15 @@
 {% block content %}
     <div class="well">
         <div class="container-fluid" style="text-align: center">
-            <div class ="row">
+            <div class=form-control">
                <!-- <div class="col-md-3"><label>Question : </label></div>-->
-                <div > {{ form(form.title) }} </div>
-                <div > {{ form(form.q) }} </div>
-                <div > {{ form(form.r) }} </div>
-                <div > {{ form(form.r) }} </div>
-                <div > {{ form(form.r) }} </div>
-
-                <input id="button" type="submit" name="button" onclick="tamere();" value="+"/>
-
+                {{ form(form) }}
             </div>
         </div>
     </div>
-   <!--  <script>
-    function tamere() {
-        alert("You button was pressed");
-    }
-    ​</script>-->
+     <script>
+         document.getElementById('button').onclick = function() {
+             alert("tamere");
+         };
+    ​</script>
 {% endblock %}

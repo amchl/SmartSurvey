@@ -34,7 +34,7 @@ class FormController extends Controller
             ->add('title', TextType::class)
             ->add('q', QuestionType::class)
             ->add('r', ReponseType::class)
-            //->add('+', ButtonType::class)
+            ->add('button', ButtonType::class)
 
             ->add('envoyer', SubmitType::class)
             ->getForm();
