@@ -55,6 +55,34 @@ class FormController extends Controller
         if ($form->get('button')->isClicked()) {
             $form->add('r', ReponseType::class);
         }
+
+
+        $form->addEventListener(
+            FormEvents::PRE_SET_DATA,
+            function (FormEvent $event) {
+                $yolo = $event->getForm();
+
+                // this would be your entity, i.e. SportMeetup
+                $data = $event->getData();
+
+                $yolo->add('Formulaire', FormulaireType::class, array(
+                    'q' => QuestionType::class,
+                    'r' => ReponseType::class,
+                    'envoyer' => SubmitType::class,
+                ));
+            }
+        );
+
+
+        /*$yolo->add('Formulaire', FormulaireType::class, array(
+            'q'       => QuestionType::class,
+            'r' => ReponseType::class,
+            'envoyer'     => SubmitType::class,
+        ));*/
+
+
+
+
         if ($form->get('envoyer')->isClicked()) {
 
             if ($request->isMethod('POST')) {
