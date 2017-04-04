@@ -13,6 +13,8 @@ use projetQCM\formBundle\Entity\Question;
 use projetQCM\formBundle\Form\FormulaireType;
 use projetQCM\formBundle\Form\QuestionType;
 use projetQCM\formBundle\Form\ReponseType;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -30,14 +32,32 @@ class FormController extends Controller
     {
         $formulaire = new Formulaire();
         $question = new Question();
-        $form = $this->get('form.factory')->createBuilder(FormulaireType::class, $formulaire)
-            ->add('title', TextType::class)
-            ->add('q', QuestionType::class)
-            ->add('r', ReponseType::class)
+       /**
+        * FORM QUI FONCTIONNE
+       */
+       $form = $this->get('form.factory')->createBuilder(FormulaireType::class, $formulaire)
+            ->add('title', TextType::class, array(
+                'label' => 'Titre du questionnaire'
+            ))
+            ->add('q', QuestionType::class, array(
+                'label' => 'Question'
+            ))
+            ->add('r', ReponseType::class, array(
+                'label' => 'Reponse'
+            ))
             ->add('button', SubmitType::class, array(
                 'validation_groups' => false))
             ->add('envoyer', SubmitType::class, array(
                 'validation_groups' => true))
+           ->addEventListener(
+               FormEvents::PRE_SET_DATA,
+               function (FormEvent $event) {
+                   $form = $event->getForm();
+                   if ($form->get('button')->isClicked()) {
+                       $form->add('r', ReponseType::class);
+                   }
+               }
+           )
             ->getForm();
 
         //$request = $this->get('request');
@@ -52,26 +72,12 @@ class FormController extends Controller
         }        if ($form->get('+')->onClicked()) {
             $form->add('r', TextType::class);
         }*/
-        if ($form->get('button')->isClicked()) {
-            $form->add('r', ReponseType::class);
-        }
 
 
-        $form->addEventListener(
-            FormEvents::PRE_SET_DATA,
-            function (FormEvent $event) {
-                $yolo = $event->getForm();
+        //if ($form->get('envoyer')->isClicked()) {
+          //  $form->add('r', ReponseType::class);
+        //}
 
-                // this would be your entity, i.e. SportMeetup
-                $data = $event->getData();
-
-                $yolo->add('Formulaire', FormulaireType::class, array(
-                    'q' => QuestionType::class,
-                    'r' => ReponseType::class,
-                    'envoyer' => SubmitType::class,
-                ));
-            }
-        );
 
 
         /*$yolo->add('Formulaire', FormulaireType::class, array(
@@ -79,9 +85,6 @@ class FormController extends Controller
             'r' => ReponseType::class,
             'envoyer'     => SubmitType::class,
         ));*/
-
-
-
 
         if ($form->get('envoyer')->isClicked()) {
 
