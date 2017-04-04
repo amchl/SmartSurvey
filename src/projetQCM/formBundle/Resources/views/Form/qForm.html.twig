@@ -2,10 +2,17 @@
 {% block content %}
     <div class="well">
         <div class="container-fluid" style="text-align: center">
-            <div class=form-control">
                <!-- <div class="col-md-3"><label>Question : </label></div>-->
-                {{ form(form) }}
-            </div>
+                {{ form_start(form, {'attr': {'class': 'form-control'} }) }}
+                {{ form_widget(form) }}
+                     <input type="submit" value="+"
+                   class="btn btn-default pull-right"  onclick="msg()"/>
+                    <script>
+                        function msg() {
+                            alert();
+                        }
+                    </script>
+                {{ form_end(form) }}
         </div>
     </div>
 {% endblock %}

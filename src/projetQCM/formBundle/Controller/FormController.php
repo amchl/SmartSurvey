@@ -45,16 +45,20 @@ class FormController extends Controller
             ->add('r', ReponseType::class, array(
                 'label' => 'Reponse'
             ))
-            ->add('button', SubmitType::class, array(
-                'validation_groups' => false))
-            ->add('envoyer', SubmitType::class, array(
+           /* ->add('button', SubmitType::class, array(
+                'validation_groups' => false,
+                'label' => '+',
+                'attr'  => array('class' => 'btn btn-default pull-right')))*/
+            ->add('submit', SubmitType::class, array(
                 'validation_groups' => true))
            ->addEventListener(
-               FormEvents::PRE_SET_DATA,
+               FormEvents::POST_SUBMIT,
                function (FormEvent $event) {
                    $form = $event->getForm();
-                   if ($form->get('button')->isClicked()) {
-                       $form->add('r', ReponseType::class);
+                   if ($form->isValid()) {
+                       if ($form->get('button')->isClicked()) {
+                           $form->add('r', ReponseType::class);
+                       }
                    }
                }
            )
@@ -86,7 +90,7 @@ class FormController extends Controller
             'envoyer'     => SubmitType::class,
         ));*/
 
-        if ($form->get('envoyer')->isClicked()) {
+        if ($form->get('submit')->isClicked()) {
 
             if ($request->isMethod('POST')) {
                 $form->handleRequest($request);
