@@ -2,13 +2,10 @@ form_homepage:
     path:     /
     defaults: { _controller: formBundle:Default:index }
 
-
-form_controller:
-    path:     /form
-    defaults: { _controller: formBundle:Form:form }
-
-
 listform_controller:
     path:     /listform
     defaults: { _controller: formBundle:ListForm:show }
 
+form_controller:
+    path:     /form
+    defaults: { _controller: formBundle:Form:form }
