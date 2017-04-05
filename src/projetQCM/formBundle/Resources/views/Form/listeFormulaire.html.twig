@@ -17,14 +17,9 @@
                     {{ formulaire.title }}
                 </div>
                 <div class="col-md-2">
-                    <button id="{{ formulaire.id }}"  class = "btn-primary" >
+                    <a href="{{ path('formulaire_show', {'idForm': formulaire.id}) }}"> <button  class = "btn-primary" >
                         Show
-                    </button>
-                </div>
-                <div class="col-md-2">
-                    <button class = "btn-primary" >
-                        edit
-                    </button>
+                    </button></a>
                 </div>
             </div>
         {% endfor %}

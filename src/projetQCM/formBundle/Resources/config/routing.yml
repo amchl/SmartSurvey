@@ -6,6 +6,22 @@ listform_controller:
     path:     /listform
     defaults: { _controller: formBundle:ListForm:show }
 
+<<<<<<< HEAD
 form_controller:
     path:     /form
     defaults: { _controller: formBundle:Form:form }
+=======
+
+reponseform_controller:
+    path:     /listForm/{idForm}
+    defaults: { _controller: formBundle:ReponseForm:ReponseShow }
+
+
+formulaire_show:
+    path:     /listForm/{idForm}
+    defaults: { _controller: formBundle:ReponseForm:reponseShow }
+
+validation_show:
+    path:     /validation/{compt}
+    defaults: { _controller: formBundle:ReponseForm:validation }
+>>>>>>> Clement

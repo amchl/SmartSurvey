@@ -40,13 +40,13 @@ class Formulaire
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    private $title;
+    protected $title;
 
 
     /**
      * @ORM\OneToMany(targetEntity="Question", mappedBy="formulaire")
      */
-    private $questions;
+    protected $questions;
 
 
     /**
